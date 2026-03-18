@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen DI</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="main-header">
+    <h1>Lista de Items</h1>
+</header>
+
+<ul>
+    <li th:each="item:${items}"  th:style="'background-image: url(' + ${item.image} + '); background-size: cover; background-position: center;'">
+        <a th:href="@{'/items/'+${item.id}}">
+        <h4 th:text="${item.title}"></h4>
+        <p th:text="'Precio: '+${item.price} "></p>
+        <p th:text="'Categoria: '+${item.category}"></p>
+        </a>
+    </li>
+
+</ul>
+
+<div class="container-boton">
+    <a th:href="@{/items/estadisticas}" class="btn-crear">Ir a las estadisticas</a>
+</div>
+
+
+</body>
+</html>

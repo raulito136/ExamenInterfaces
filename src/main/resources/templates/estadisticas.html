@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen DI</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="main-header">
+  <h1>Panel de Estadísticas</h1>
+  <a th:href="@{/items/lista}" class="btn-back">← Volver a la Lista</a>
+</header>
+
+<main class="container">
+  <section class="stats-grid">
+    <div class="card stat-card">
+      <h3>Total de Productos</h3>
+      <p class="big-number" th:text="${estadisticas.numeroTotal}">0</p>
+    </div>
+
+    <div class="card manufacturers-card">
+      <h3>Fabricantes Disponibles</h3>
+      <ul>
+        <li th:each="fabricante : ${estadisticas.fabricantes}" th:text="${fabricante}">Fabricante</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card alert-card">
+    <h3>Items con stock inferior a 100 unidades</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Stock Actual</th>
+        <th>Enlace</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${estadisticas.itemsConStockInferior}">
+        <td th:text="${item.title}">Título</td>
+        <td class="warning-text" th:text="${item.count}">0</td>
+        <td><a th:href="@{'/items/'+${item.id}}">Detalles del item</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card ia-card">
+    <h3>Análisis con IA</h3>
+    <div class="ia-response">
+      <p th:text="${ia}">Cargando análisis...</p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

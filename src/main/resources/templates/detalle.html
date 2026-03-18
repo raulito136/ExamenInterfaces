@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen DI</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="main-header">
+    <h1 th:text="${item.title}"></h1>
+</header>
+
+<div class="contenedor-blanco">
+    <img th:src="${item.image}" alt="Imagen del ítem" width="200px">
+    <h2 th:text="${item.title}"></h2>
+    <p th:text="'Id: ' + ${item.id}"></p>
+    <p th:text="'Descripción: ' + ${item.description}"></p>
+    <p th:text="'Rate: ' + ${item.rate}"></p>
+    <p th:text="'Precio: ' + ${item.price} + '€'"></p>
+    <p th:text="'Categoría: ' + ${item.category}"></p>
+    <p th:text="'Valoración: ' + ${item.rate}"></p>
+    <p th:text="'Stock: ' + ${item.count}"></p>
+    <p th:text="'Color: ' + ${item.color}"></p>
+    <p th:text="'Manufacturer: ' + ${item.manufacturer}"></p>
+    <p th:text="'EAN: ' + ${item.EAN}"></p>
+    <a href="/items/lista">Volver al listado de los items</a>
+    <div class="container-boton">
+    <a class="btn-crear" th:href="@{/items/editar/{id}(id=${item.id})}">Editar producto</a>
+    </div>
+</div>
+
+</body>
+</html>
